@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css"/>
+  <link rel="stylesheet" href="./phone.css"/>
+  <title>Resume Builder</title>
+</head>
+<body>
+  <header class="header">
+    <div class="inner-header">
+      <div class="brand-name">RB</div>
+      <div class="contact">contact</div>
+    </div>
+  </header>
+  <div class="app__">
+    <div class="input-container">
+      <form action="generate_resume.php" id="resume_form" method="post" >
+        <h2>Personal Information</h2>
+        <div class="input-dev-flex">
+            <label for="name" class="input-disc">Name</label>
+            <input type="text" id="name" name="name" class="input-div"/>
+        </div>
+        <div class="input-dev-flex">
+          <label for="email" class="input-disc">Email</label>
+          <input type="text" id="email" name="email" class="input-div"/>
+        </div>
+        <div class="input-dev-flex">
+          <label for="phone" class="input-disc">Phone</label>
+          <input type="text" id="phone" name="phone" class="input-div"/>
+        </div>
+
+        <h2 class="devider">Education</h2>
+
+        <div style="width: 100%;">
+          <div id="education_fields">
+          <div class="input-dev-flex">
+            <label for="school" class="input-disc">School</label>
+            <input type="text" id="school" name="school[]" class="input-div"/>
+          </div>
+          <div class="input-dev-flex">
+            <label for="degree" class="input-disc">Degree</label>
+            <input type="text" id="degree" name="degree[]" class="input-div"/>
+          </div>
+          <div class="input-dev-flex">
+            <label for="degree" class="input-disc">From</label>
+            <input type="date" id="schoolFrom" name="schoolFrom[]" class="input-div"/>
+          </div>
+          <div class="input-dev-flex">
+            <label for="to" class="input-disc">To</label>
+            <input type="date" id="schoolTo" name="schoolTo[]" class="input-div"/>
+          </div>
+          
+          </div>
+          <button type="button" onclick="addEducationField()">Add Education</button>
+        </div>
+        <br>
+        <h2>Work Experience</h2>
+        <div style="width: 100%;" id="work_experience_fields">
+          <div id="work_experience_fields">
+            <div class="input-dev-flex">
+              <label for="company" class="input-disc">Company</label>
+              <input type="text" id="company" name="company[]" class="input-div"/>
+            </div>
+            <div class="input-dev-flex-textArea">
+              <label for="position" class="input-disc-ta">Position</label>
+              <textarea type="text" id="position" name="position[]" class="input-div-ta" placeholder="Explain your posetion"></textarea>
+            </div>
+            <div class="input-dev-flex">
+              <label for="degree" class="input-disc">From</label>
+              <input type="date" id="experienceFrom" name="experienceFrom[]" class="input-div"/>
+            </div>
+            <div class="input-dev-flex">
+              <label for="to" class="input-disc">To</label>
+              <input type="date" id="experienceTo" name="experienceTo[]" class="input-div"/>
+            </div>
+          </div>
+          <button type="button" onclick="addWorkExperienceField()">Add Work Experience</button>
+        </div>
+        <br>
+        <h2>Skills</h2>
+      <div id="skills-dev">
+        <div class="input-dev-flex">
+          <label for="skills" class="input-disc">Skills</label>
+          <input id="skills" name="skills" placeholder="" >
+          <input type='range' id="range" name="skills" value="40">
+        </div>
+        <button type="button" onclick="addSkills()">Add Skills</button>
+      </div>
+      <br/>
+      <h2 class="devider">More About Me</h2>
+        <div class="input-dev-flex-textArea">
+          <label for="phone" class="input-disc-ta">About Me</label>
+          <textarea type="text" id="about" name="about" class="input-div-ta" placeholder="Sell Your self"></textarea>
+
+        </div>
+        <br/>
+        <h2 class="devider">My Hubbies</h2>
+        <div class="input-dev-flex-textArea">
+          <label for="phone" class="input-disc-ta">Things you love doing</label>
+          <textarea type="text" id="hubbies" name="hubbies" class="input-div-ta" placeholder="I love sleeping.."></textarea>
+
+        </div>
+        <button  onclick="resetLocalStorage()">Reset All</button>
+        <button type="submit" title="Generate Resume">Generate Resume</button>
+
+        <strong>All contents are editable click on them to edit</strong>
+
+      </form>
+    </div>
+    <div class="other-container">
+      <div class="output-div">
+        <div class="top-header">
+          <div id="name_div" contenteditable="true"></div>
+          <div id="role_div" contenteditable="true">Edit Profession</div>
+        </div>
+        <div class="details-dive">
+          <div class="first-info">
+            <div class="i-header">Contact</div>
+            <div class="holder-items-flex">
+              <div id="phone_div" contenteditable="true"></div>
+            </div>
+            <div class="holder-items-flex">
+              <div id="email_div"></div>
+            </div>
+            
+            <div class="i-header">Education</div>
+            <div id="education_div" contenteditable="true"></div>
+            
+            <div class="i-header">Key Skills</div>
+            <div id="skills_div" contenteditable="true"></div>
+            
+            
+          </div>
+  
+  
+          <div class="devider-h"></div>
+            
+          <div class="profile-info">
+  
+              <div class="experience-holder">
+                <div class="i-header">Profile</div>
+                <div id="about_div" contenteditable="true"></div>
+              </div>
+  
+              <div class="experience-holder">
+                <div class="i-header">Professional Experience</div>
+                <div id="work_experience_div" contenteditable="true"></div>
+              </div>
+  
+              <div class="i-header">Hobbies</div>
+              <div id="hobbies_div" contenteditable="true"></div>
+  
+              
+            </div>
+        </div>
+      </div>
+      <button  onclick="resetLocalStorage()">DOWNLOAD PDF</button>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
