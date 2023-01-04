@@ -111,7 +111,7 @@
       </form>
     </div>
     <div class="other-container">
-      <div class="output-div">
+      <div id='toPDF' class="output-div">
         <div class="top-header">
           <div id="name_div" contenteditable="true"></div>
           <div id="role_div" contenteditable="true">Edit Profession</div>
@@ -157,9 +157,11 @@
             </div>
         </div>
       </div>
-      <button  onclick="resetLocalStorage()">DOWNLOAD PDF</button>
+      <button  onclick="downloadPDF()">DOWNLOAD PDF</button>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

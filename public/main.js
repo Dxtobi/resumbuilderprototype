@@ -1,3 +1,20 @@
+
+
+
+function downloadPDF() {
+  generatePDF()
+}
+
+function generatePDF() {
+  const div = document.getElementById('toPDF');
+  html2canvas(div).then(function(canvas) {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.save('myPDF.pdf');
+  });
+}
+
 function dateFun(date) {
   console.log(date)
   const mnt = ['Jen', 'Feb', 'Mach', 'April', 'May', 'Jun', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec']
