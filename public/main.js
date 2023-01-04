@@ -128,6 +128,9 @@ function saveResume() {
 //called on blur each time a input is no longer on focused
 function saveInput(event) {
   const resumeDB = JSON.parse(localStorage.getItem('resume'))
+  if (resumeDB === null) {
+    return saveResumeToLocalStorage()
+  }
   console.log(resumeDB)
   const input = event.target;
   resumeDB[input.id] = input.value;
@@ -274,5 +277,8 @@ document.getElementById('resume_form').addEventListener('submit', function (even
 
 (function () {
   const resume = localStorage.getItem('resume')
+  if (resume === null) {
+    saveResumeToLocalStorage()
+  }
   displayResume(JSON.parse(resume))
 })()
